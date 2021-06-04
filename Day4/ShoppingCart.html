@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <script src=""></script>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Shopping Cart</title>
+      <style>
+         .shoppingcart {
+         font-size: 30px;
+         }
+         .cart1 {
+         background-color: green;
+         border: 1px solid black;
+         border-radius: 10px;
+         }
+         .cart2 {
+         background-color: blue;
+         border: 1px solid black;
+         border-radius: 10px;}
+         .cart3 {
+         background-color: grey;
+         border: 1px solid black;
+         border-radius: 10px;}
+         button {
+         background-color: #4CAF50; /* Green */
+         border: none;
+         color: white;
+         padding: 10px 22px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+         border-radius: 10px;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="shoppingcart">
+      <div class="cart1" id="cart1" >Item1  price $10<br />
+         <button onclick="increament1()">+</button>
+         <input value="0" type="text" name="item1" id="item1" />
+         <button onclick="decrement1()">-</button>
+      </div>
+      <div class="cart2" id="cart2">Item2 price $20<br>
+         <button onclick="increament2()">+</button>
+         <input value="0" type="text" name="item2" id="item2" />
+         <button onclick="decrement2()">-</button>
+      </div>
+      <div class="cart3" id="cart3">Item3 price $30<br>
+         <button onclick="increament3()">+</button>
+         <input  value="0" type="text" name="item3" id="item3" />
+         <button onclick="decrement3()">-</button>
+      </div>
+      <div id="button_container">
+         SubTotal: <input class="subtotal" value="0" id="subtotal" disabled />
+         <button type="button" id="proceed_cart" onclick="subtotal()">SubTotal</button> <br>
+         <button type="button" id="clear_cart" onclick="ClearCart()">Clear Cart</button>
+      </div>
+      <script> 
+         function increament1() {
+         var value = parseInt(document.getElementById('item1').value);
+               value = isNaN(value) ? 0 : value;   
+              value= value + 10;
+             document.getElementById('item1').value = value;
+         document.getElementById('item1').innerHTML = value; 
+         }
+         function decrement1() {
+         
+         var value = parseInt(document.getElementById('item1').value);
+         if(value == 0 )
+         {
+         return false;
+         }
+         else{
+               value = isNaN(value) ? 0 : value;   
+              value= value - 10;
+             document.getElementById('item1').value = value;
+         document.getElementById('item1').innerHTML = value; 
+         }
+         }
+         function increament2() {
+         var value = parseInt(document.getElementById('item2').value);
+               value = isNaN(value) ? 0 : value;   
+              value= value + 20;
+             document.getElementById('item2').value = value;
+         document.getElementById('item2').innerHTML = value; 
+         }
+         function decrement2() {
+         
+         var value = parseInt(document.getElementById('item2').value);
+         if(value == 0 )
+         {
+         return false;
+         }
+         else{
+               value = isNaN(value) ? 0 : value;   
+              value= value - 20;
+             document.getElementById('item2').value = value;
+         document.getElementById('item2').innerHTML = value; 
+         }
+         }
+         function increament3() {
+         var value = parseInt(document.getElementById('item3').value);
+               value = isNaN(value) ? 0 : value;   
+              value= value + 30;
+             document.getElementById('item3').value = value;
+         document.getElementById('item3').innerHTML = value; 
+         }
+         function decrement3() {
+         
+         var value = parseInt(document.getElementById('item3').value);
+         if(value == 0 )
+         {
+         return false;
+         }
+         else{
+               value = isNaN(value) ? 0 : value;   
+              value= value - 30;
+             document.getElementById('item3').value = value;
+         document.getElementById('item3').innerHTML = value; 
+         }
+         }
+         
+         function subtotal() {
+         var t1,t2,t3;
+         t1 = parseInt(document.getElementById('item1').value);
+         t2 = parseInt(document.getElementById('item2').value);
+         t3 = parseInt(document.getElementById('item3').value);
+         results = t1 + t2 + t3;
+         document.getElementById('subtotal').value = results;
+         }
+         function ClearCart() {
+         document.getElementById('item1').value="";
+         document.getElementById('item2').value="";
+         document.getElementById('item3').value="";
+         document.getElementById('subtotal').value="";
+         }
+         
+      </script>
+   </body>
+</html>

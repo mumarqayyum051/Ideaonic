@@ -1,0 +1,214 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="styles/styles.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="invoice-title">
+            <h2>Invoice</h2>
+            <h3 class="pull-right">Order # 12345</h3>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-xs-6">
+              <address>
+                <strong>Billed To:</strong><br />
+                John Smith<br />
+                1234 Main<br />
+                Apt. 4B<br />
+                Springfield, ST 54321
+              </address>
+            </div>
+            <div class="col-xs-6 text-right">
+              <address>
+                <strong>Shipped To:</strong><br />
+                Jane Smith<br />
+                1234 Main<br />
+                Apt. 4B<br />
+                Springfield, ST 54321
+              </address>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <address>
+                <strong>Payment Method:</strong><br />
+                Visa ending **** 4242<br />
+                jsmith@email.com
+              </address>
+            </div>
+            <div class="col-xs-6 text-right">
+              <address>
+                <strong>Order Date:</strong><br />
+                March 7, 2014<br /><br />
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="row">
+        <div class="col-md-12">
+        <input type="text" id="items" name="items" placeholder="Selected Item Price" />
+        <input type="number" id="price" name="price" placeholder="Price" />
+        <input type="number" id="quantity" name="quantity" placeholder="Quantity" />
+        <input type="number" id="total" name="total" placeholder="Totals" disabled/>
+        <input type="button" value="Check Total" onclick="CalculateTotal()">
+        <input type="button" value="Add" onclick="insertRow()">
+        
+        </div>
+      <div class="row ">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Order summary</strong></h3>
+            </div>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table  id="table-data" class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <td><strong>Item</strong></td>
+                      <td class="text-center"><strong>Price</strong></td>
+                      <td class="text-center"><strong>Quantity</strong></td>
+                      <td class="text-right"><strong>Totals</strong></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                    <tr>
+                      <td>BS-200</td>
+                      <td class="text-center">$10.99</td>
+                      <td class="text-center">1</td>
+                      <td class="text-right">$10.99</td>
+                    </tr>
+                    <tr>
+                      <td>BS-400</td>
+                      <td class="text-center">$20.00</td>
+                      <td class="text-center">3</td>
+                      <td class="text-right">$60.00</td>
+                    </tr>
+                    <tr>
+                      <td>BS-1000</td>
+                      <td class="text-center">$600.00</td>
+                      <td class="text-center">1</td>
+                      <td class="text-right">$600.00</td>
+                    </tr>
+                    <tr>
+                      <td class="thick-line"></td>
+                      <td class="thick-line"></td>
+                      <td class="thick-line text-center">
+                        <strong>Subtotal</strong>
+                      </td>
+                      <td class="thick-line text-right">$670.99</td>
+                    </tr>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center">
+                        <strong>Shipping</strong>
+                      </td>
+                      <td class="no-line text-right">$15</td>
+                    </tr>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center">
+                        <strong>Total</strong>
+                      </td>
+                      <td class="no-line text-right">$685.99</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+<script>
+function insertRow() {
+var NewItem = document.getElementById('items').value;
+var NewPrice = document.getElementById('price').value;
+var NewQuantity = document.getElementById('quantity').value;
+var NewTotal = document.getElementById('total').value;
+var table = document.getElementById('table-data');
+
+var tableLength = (table.rows.length) -1 ; //Find number of rows in the table
+var insertRow = table.insertRow(tableLength).outerHTML = 
+"<tr class='newrow' id='row"+tableLength+"'><td id='items"+tableLength+"'>"+NewItem+"</td><td id='price"+tableLength+"'>"+NewPrice+"</td><td id='quantity"+tableLength+"'>"+NewQuantity+"</td><td id='total"+tableLength+"'>"+NewTotal+"</td><td><input type='button' id='edit"+tableLength+"' value='Edit' class='editclass' onclick='editRow("+tableLength+")' /><input type='button' id='save"+tableLength+"' value='Save' class='saveclass' onclick='saveRow("+tableLength+")' /><input type='button' id='delete"+tableLength+"' value='Delete' class='deleteclass' onclick='deleteRow("+tableLength+")' /> </td></tr>"
+
+ document.getElementById("items").value="";
+ document.getElementById("price").value="";
+ document.getElementById("quantity").value="";
+ document.getElementById("total").value="";
+
+}
+function editRow(no)
+{
+
+ document.getElementById("edit"+no).style.display="none";
+ document.getElementById("save"+no).style.display="block";
+	
+ var NewItem = document.getElementById('items'+no);
+var NewPrice = document.getElementById('price'+no);
+var NewQuantity = document.getElementById('quantity'+no);
+var NewTotal = document.getElementById('total'+no);
+	
+ var items_data=NewItem.innerHTML;
+ var price_data=NewPrice.innerHTML;
+ var quantity_data=NewQuantity.innerHTML;
+var total_data = NewTotal.innerHTML;
+	
+ NewItem.innerHTML="<input type='text' id='items"+no+"' value='"+items_data+"'>";
+ NewPrice.innerHTML="<input type='text' id='price"+no+"' value='"+price_data+"'>";
+ NewQuantity.innerHTML="<input type='text' id='quantity"+no+"' value='"+quantity_data+"'>";
+ NewQuantity.innerHTML="<input type='text' id='total"+no+"' value='"+total_data+"'>";
+}
+
+function saveRow(no)
+{
+alert(no);
+ var NewItem = document.getElementById("items"+no).value;
+var NewPrice = document.getElementById("price"+no).value;
+var NewQuantity = document.getElementById("quantity"+no).value;
+var NewTotal = document.getElementById("total"+no).value;
+
+ document.getElementById("items"+no).innerHTML=NewItem;
+ document.getElementById("price"+no).innerHTML=NewPrice;
+ document.getElementById("quantity"+no).innerHTML=NewQuantity;
+ document.getElementById("total"+no).innerHTML=NewTotal;
+
+ document.getElementById("edit"+no).style.display="block";
+ document.getElementById("save"+no).style.display="none";
+}
+
+function deleteRow(no)
+{
+
+ document.getElementById("row"+no+"").outerHTML="";
+}
+
+function CalculateTotal()
+{         var price = document.getElementById('price').value;
+         var quantity = document.getElementById('quantity').value;
+         var total = price * quantity;
+         document.getElementById('total').value = total;
+         }
+</script>
+  </body>
+</html>

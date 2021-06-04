@@ -1,0 +1,66 @@
+<html>
+  <header>
+    <title>Sign up</title>
+  </header>
+  <body>
+    <script>
+      function form_validation() {
+        var name = document.getElementById('namefield').value;
+        var email = document.getElementById('emailfield').value;
+        var password = document.getElementById('passfield').value;
+        var phonenumber = document.getElementById('numberfield').value;
+
+        //For Name
+        var namepattern = /^[A-Za-z]+$/;
+        if (name.match(namepattern)) {
+          return true;
+        } else if (name == '') {
+          document.getElementById('name_span').innerHTML =
+            'Please Enter a number';
+        } else {
+          document.getElementById('namefield').style.borderColor = 'red';
+          document.getElementById('name_span').innerHTML =
+            'Please Enter a letter, numerical expressions are not allowed';
+        }
+
+        /* //For Phone Number
+        if (isNaN(phonenumber)) {
+          document.getElementById('phonenumber1').innerHTML =
+            'Enter Numeric Value only';
+          document.getElementById('numberfield').style.borderColor = 'red';
+        } else if (phonenumber == '') {
+          document.getElementById('phonenumber1').innerHTML =
+            'Please Enter a number';
+        } else {
+        } */
+      }
+    </script>
+    <h1>Day 1</h1>
+    <form
+      name="signup_form"
+      action="#"
+      method="POST"
+      onsubmit="form_validation(); return false;"
+    >
+      <label>Name: </label>
+      <input type="text" name="name" id="namefield" />
+      <span id="name_span"></span> <br /><br />
+      <!-- <label for="password">Password: </label>
+      <input type="password" minlength="4" required /><br />
+      <span>Minimum Length should be 4.</span><br />
+      <br />
+      <label for="email">Email:</label>
+      <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-z]{2,4}" />
+      <br />
+      <span>Please Follow the Pattern: xyz@gmail.com</span><br />
+      <br />
+      <label for="phonenumber">Phone Number: </label>
+      <input type="text" name="number" id="numberfield" />
+      <br />
+      <span id="phonenumber1"></span>
+      <br />
+ -->
+      <input value="Submit" type="submit" onsubmit="return form_validation()" />
+    </form>
+  </body>
+</html>

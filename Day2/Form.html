@@ -1,0 +1,21 @@
+<html>
+  <header>
+    <title>Form</title>
+    <script>
+      function validation() {
+        var name = document.getElementById('namefield').value;
+        var namepattern = /^[A-Za-z ]+$/;
+
+        if (name.match(namepattern)) {
+          document.getElementById('namefield').createTextNode('Input Accepted');
+        }
+      }
+    </script>
+  </header>
+  <body>
+    <div>
+      Name: <input type="text" id="namefield" name="name" />
+      <input type="submit" value="Submit" onsubmit="return validation()" />
+    </div>
+  </body>
+</html>

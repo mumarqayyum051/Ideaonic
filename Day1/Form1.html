@@ -1,0 +1,87 @@
+<html>
+  <header>
+    <title>Form</title>
+  </header>
+  <body>
+    <div>
+      Name:
+      <input type="text" id="namefield" name="name" />
+      <br /><br /><br />
+      Roll no: <input type="text" id="rollnofield" name="rollno" />
+      <br /><br /><br />
+      Email: <input type="text" id="emailfield" name="email" />
+      <br /><br /><br />
+      MobileNo: <input type="tel" id="mobilenofield" name="pass" />
+      <br /><br /><br />
+      <input type="submit" value="Submit" onclick=" form_validation()" />
+    </div>
+    <script>
+      function form_validation() {
+        //For Name
+        var name = document.getElementById('namefield').value;
+        var namepattern = /^[A-Za-z ]+$/;
+        if (name.match(namepattern)) {
+          document.getElementById('namefield').append('Input Accepted');
+          document.getElementById('namefield').style.borderColor = 'green';
+        } else if (name == '') {
+          document.getElementById('namespan').innerHTML = 'Please Enter Name!';
+          document.getElementById('namefield').style.borderColor = 'red';
+        } else {
+          var spn = document.body.createElement('Span');
+          spn.innerHTML = 'Create Element';
+
+          document.getElementById('namespan').innerHTML =
+            'Input Denied!. Please use letters';
+          document.getElementById('namefield').style.borderColor = 'red';
+        }
+
+        //For Roll No
+        var rollno = document.getElementById('rollnofield').value;
+        var rollnopattern = /^\d[a-z]\d{2}\/[a-z]{3,}\/\d{1,3}$/i;
+        if (rollno.match(rollnopattern)) {
+          document.getElementById('rollnospan').innerHTML = 'Input Accepted!';
+          document.getElementById('rollnofield').style.borderColor = 'green';
+        } else if (rollno == '') {
+          document.getElementById('rollnospan').innerHTML =
+            'Please Enter RollNo!';
+          document.getElementById('rollnofield').style.borderColor = 'red';
+        } else {
+          document.getElementById('rollnospan').innerHTML =
+            'Input Denied!. Please use letters';
+          document.getElementById('rollnofield').style.borderColor = 'red';
+        }
+        //For Email
+        var email = document.getElementById('emailfield').value;
+        var emailpattern =
+          /^[a-zA-Z0-9.%-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (email.match(emailpattern)) {
+          document.getElementById('emailspan').innerHTML = 'Input Accepted!';
+          document.getElementById('emailfield').style.borderColor = 'green';
+        } else if (rollno == '') {
+          document.getElementById('emailspan').innerHTML =
+            'Please Enter Email!';
+          document.getElementById('emailfield').style.borderColor = 'red';
+        } else {
+          document.getElementById('emailspan').innerHTML =
+            'Input Denied!. Please follow the pattern';
+          document.getElementById('emailfield').style.borderColor = 'red';
+        }
+        //For Mobile No
+        var mobileno = document.getElementById('mobilenofield').value;
+        var mobilenopattern = /^[11,12]+$/;
+        if (mobileno.match(mobilenopattern)) {
+          document.getElementById('mobilenospan').innerHTML = 'Input Accepted!';
+          document.getElementById('rollnofield').style.borderColor = 'green';
+        } else if (rollno == '') {
+          document.getElementById('mobilenospan').innerHTML =
+            'Please Enter Mobile No!';
+          document.getElementById('mobilenofield').style.borderColor = 'red';
+        } else {
+          document.getElementById('mobilenospan').innerHTML =
+            'Input Denied!. Please dont use letters';
+          document.getElementById('mobilenofield').style.borderColor = 'red';
+        }
+      }
+    </script>
+  </body>
+</html>

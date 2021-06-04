@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      .buttons {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background-color: #2196f3;
+        width: 250px;
+      }
+      .grid-item {
+        padding: 5px;
+        font-size: 30px;
+        text-align: center;
+      }
+      .grid-item:hover {
+        cursor: pointer;
+      }
+      #inputfield {
+        height: 60px;
+        width: 250px;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="calculator">
+      Entered Value: <br />
+      <input type="text" id="inputfield" disabled />
+      <div class="buttons">
+        <input
+          value="1"
+          type="button"
+          onclick="calculator.inputfield.value += '1' "
+          class="grid-item"
+        />
+        <input
+          value="2"
+          type="button"
+          onclick="calculator.inputfield.value += '2' "
+          class="grid-item"
+        />
+        <input
+          value="3"
+          type="button"
+          onclick="calculator.inputfield.value += '3' "
+          class="grid-item"
+        />
+        <input
+          value="4"
+          type="button"
+          onclick="calculator.inputfield.value += '4' "
+          class="grid-item"
+        />
+        <input
+          value="5"
+          type="button"
+          onclick="calculator.inputfield.value += '5' "
+          class="grid-item"
+        />
+        <input
+          value="6"
+          type="button"
+          onclick="calculator.inputfield.value += '6' "
+          class="grid-item"
+        />
+        <input
+          value="7"
+          type="button"
+          onclick="calculator.inputfield.value += '7' "
+          class="grid-item"
+        />
+        <input
+          value="8"
+          type="button"
+          onclick="calculator.inputfield.value += '8' "
+          class="grid-item"
+        />
+        <input
+          value="9"
+          type="button"
+          onclick="calculator.inputfield.value += '9' "
+          class="grid-item"
+        />
+        <input
+          value="0"
+          type="button"
+          onclick="calculator.inputfield.value += '0' "
+          class="grid-item"
+        />
+        <input
+          value="+"
+          type="button"
+          onclick="calculator.inputfield.value += '+' "
+          class="grid-item"
+        />
+        <input
+          value="-"
+          type="button"
+          onclick="calculator.inputfield.value += '-' "
+          class="grid-item"
+        />
+        <input
+          value="*"
+          type="button"
+          onclick="calculator.inputfield.value += '*' "
+          class="grid-item"
+        />
+        <input
+          value="/"
+          type="button"
+          onclick="calculator.inputfield.value += '/' "
+          class="grid-item"
+        />
+        <input
+          type="button"
+          value="="
+          onclick="calculator.inputfield.value = eval(calculator.inputfield.value)"
+          class="grid-item"
+        />
+        <input
+          type="button"
+          value="Clear"
+          onclick="calculator.inputfield.value = '' "
+          class="grid-item"
+        />
+      </div>
+    </form>
+  </body>
+</html>

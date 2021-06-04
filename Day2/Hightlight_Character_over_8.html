@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Highlight Character Over 8</title>
+    <style>
+      .yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="paragraph">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor officiis,
+      repellendus dolore magnam incidunt rem distinctio. Totam fugit
+      <span class="cbab">Ammar</span>
+      <i>Iqbal</i>
+      voluptatibus dolorum nam dolor expedita a ratione doloribus nemo eos,
+      ipsam blanditiis.
+    </p>
+
+    <script>
+      function highlighter() {
+        let paragraph_text = document.getElementById('paragraph').innerHTML;
+        let paragraph_words = paragraph_text.split(' ');
+        let output = '';
+        let highlightedwords = '';
+        for (let i = 0; i < paragraph_words.length; i++) {
+          let paragraph_word = paragraph_words[i];
+          if (paragraph_word.length > 8) {
+            highlightedwords =
+              "<span class='yellow'>" + paragraph_word + '</span>';
+          } else {
+            highlightedwords = paragraph_word;
+          }
+          output = output + ' ' + highlightedwords + ' ';
+        }
+        return output;
+      }
+      document.getElementById('paragraph').innerHTML = highlighter();
+    </script>
+  </body>
+</html>
