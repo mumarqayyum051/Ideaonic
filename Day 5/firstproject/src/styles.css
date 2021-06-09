@@ -1,0 +1,15 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+table {
+    color: black;
+    border: 1px solid black;
+}
+tr 
+{
+    color: black;
+}
+
+td {
+    color: brown;
+    border: 1px solid black;
+
+}

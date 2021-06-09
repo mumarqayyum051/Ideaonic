@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+  <input formControlName="fname" type="text" name="name" /> <br>
+  <span <!-- *ngIf="fname.invalid && fname.touched" --> >Name is Required</span> 
+
+  <input formControlName="email" type="email" name="mail" /> <br>
+  <span <!-- *ngIf="email.invalid && email.touched"  -->>Email is Required</span> 
+
+<button (click)="sub()">Submit</button>
+</form>
