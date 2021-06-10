@@ -1,0 +1,85 @@
+<!-- Default form login -->
+<form class="text-center border border-light p-5" [formGroup]="SignUpForm">
+  <p class="h4 mb-4">Sign in</p>
+
+  <!-- Email -->
+  <input
+    type="text"
+    id="defaultLoginFormName"
+    [class.is-invalid]="name.invalid && name.touched"
+    class="form-control mb-4"
+    placeholder="Name"
+    formControlName="name"
+  />
+  <div
+    formArrayName="addNames"
+    *ngFor="let name of addNames.controls; let i = index"
+  >
+    <input
+      [formControlName]="i"
+      class="form-control mb-4"
+      type="text"
+      name=""
+      id="defaultLoginNewFormName+i"
+    />
+  </div>
+  <button
+    type="button"
+    (click)="addName()"
+    formArrayName="addNames"
+    class="btn btn-secondary m-2"
+  >
+    Add another name
+  </button>
+  <div *ngIf="name.invalid && name.touched">
+    <small class="text-danger" *ngIf="name.errors?.required"
+      >Please enter a name
+    </small>
+    <small class="text-danger" *ngIf="name.errors?.minlength"
+      >At least 5 characters
+    </small>
+  </div>
+  <input
+    type="email"
+    id="defaultLoginFormEmail"
+    [class.is-invalid]="email.invalid && email.touched"
+    class="form-control mb-4"
+    placeholder="E-mail"
+    formControlName="email"
+  />
+  <div *ngIf="email.invalid && email.touched">
+    <small class="text-danger" *ngIf="email.errors?.email">
+      Enter a valid Email address
+    </small>
+  </div>
+  Subscribe
+  <input type="checkbox" formControlName="subscribe" />
+  <!-- Password -->
+  <input
+    type="password"
+    id="defaultLoginFormPassword"
+    [class.is-invalid]="password.invalid && password.touched"
+    class="form-control mb-4"
+    placeholder="Password"
+    formControlName="password"
+  />
+  <input
+    type="password"
+    id="defaultLoginFormConfirmPassword"
+    [class.is-invalid]="SignUpForm.errors?.notmatched"
+    class="form-control mb-4"
+    placeholder="Confirm
+  Password"
+    formControlName="confirmpassword"
+  />
+  <small *ngIf="SignUpForm.errors?.notmatched" class="text-danger"
+    >Password does not match
+  </small>
+  <br />
+
+  <!-- Sign in button -->
+  <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+    Sign in
+  </button>
+</form>
+<!-- Default form login -->
