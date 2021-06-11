@@ -1,0 +1,33 @@
+<h1>Binding Using Interpolation</h1>
+<h3>{{ interpolation }}</h3>
+<br /><br />
+
+<h1>Rendering picture using Property Binding</h1>
+<img [src]="Pbinding" />
+<br /><br />
+
+<h1>Increamenting using eventBinding</h1>
+<button (click)="increament()">Click to Increament</button>
+<h3>{{ count }}</h3>
+<br /><br />
+
+<h1>TwoWay Binding</h1>
+<h1>Setting focus on first input using @ViewChild</h1>
+<input #nameRef type="text" [(ngModel)]="name" />
+<h3>{{ name }}</h3>
+
+<br /><br />
+
+<h1>Spliting TwoWay Binding(Type umar to check)</h1>
+
+<input
+  type="text"
+  [ngModel]="username"
+  (ngModelChange)="SplitBinding($event)"
+/>
+<h3>{{ username }}</h3>
+
+<h1>TwoWay Binding(Type umar to check) using setter getter</h1>
+
+<input type="text" [(ngModel)]="customerName" />
+<h3>{{ customerName }}</h3>
